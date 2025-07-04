@@ -1,4 +1,6 @@
 "use client";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 
 export default function Home() {
@@ -12,22 +14,20 @@ export default function Home() {
         background: "#f5f5f5",
       }}
     >
-      <Link
-        href="/quote"
-        style={{
-          padding: "1rem 2rem",
-          borderRadius: "8px",
-          background: "#0070f3",
-          color: "#fff",
-          textDecoration: "none",
-          fontSize: "1.25rem",
-          fontWeight: "bold",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-          transition: "background 0.2s",
-        }}
-      >
-        Quote Generator
-      </Link>
+      <Card style={{ maxWidth: 400, width: "100%", textAlign: "center" }}>
+        <CardContent>
+          <Link
+            href="/quote"
+            style={{ width: "100%", display: "inline-block" }}
+          >
+            <Button
+              style={{ width: "100%", fontSize: "1.25rem", fontWeight: "bold" }}
+            >
+              Quote Generator
+            </Button>
+          </Link>
+        </CardContent>
+      </Card>
     </div>
   );
 }
