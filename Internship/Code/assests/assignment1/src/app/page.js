@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 
 export default function Home() {
@@ -9,25 +8,34 @@ export default function Home() {
       style={{
         minHeight: "100vh",
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        background: "#f5f5f5",
+        background: "#fcfcff",
+        padding: "2rem",
       }}
     >
-      <Card style={{ maxWidth: 400, width: "100%", textAlign: "center" }}>
-        <CardContent>
-          <Link
-            href="/quote"
-            style={{ width: "100%", display: "inline-block" }}
-          >
-            <Button
-              style={{ width: "100%", fontSize: "1.25rem", fontWeight: "bold" }}
-            >
-              Quote Generator
-            </Button>
-          </Link>
-        </CardContent>
-      </Card>
+      <Link
+        href="/quote"
+        style={{ width: "100%", display: "flex", justifyContent: "center" }}
+      >
+        <Button
+          style={{
+            background: "linear-gradient(90deg, #06b6d4 0%, #0ea5e9 100%)",
+            color: "#fff",
+            fontWeight: 700,
+            fontSize: "1.25rem",
+            border: "none",
+            borderRadius: "2rem",
+            padding: "0.75rem 2.5rem",
+            boxShadow: "0 4px 16px 0 rgba(6,182,212,0.12)",
+            cursor: "pointer",
+            transition: "background 0.2s, box-shadow 0.2s",
+          }}
+        >
+          Quote Generator
+        </Button>
+      </Link>
     </div>
   );
 }
