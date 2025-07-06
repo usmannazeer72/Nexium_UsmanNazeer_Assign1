@@ -169,7 +169,7 @@ export default function QuoteGenerator() {
                       marginBottom: "0.8rem",
                     }}
                   >
-                    "{q.quote}"
+                    {q.quote}
                   </p>
                   <p
                     style={{
