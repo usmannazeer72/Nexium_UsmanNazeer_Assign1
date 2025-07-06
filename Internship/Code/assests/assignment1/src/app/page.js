@@ -1,41 +1,19 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        background: "#fcfcff",
-        padding: "2rem",
-      }}
-    >
-      <Link
-        href="/quote"
-        style={{ width: "100%", display: "flex", justifyContent: "center" }}
-      >
-        <Button
-          style={{
-            background: "linear-gradient(90deg, #06b6d4 0%, #0ea5e9 100%)",
-            color: "#fff",
-            fontWeight: 700,
-            fontSize: "1.25rem",
-            border: "none",
-            borderRadius: "2rem",
-            padding: "0.75rem 2.5rem",
-            boxShadow: "0 4px 16px 0 rgba(6,182,212,0.12)",
-            cursor: "pointer",
-            transition: "background 0.2s, box-shadow 0.2s",
-          }}
-        >
-          Quote Generator
-        </Button>
-      </Link>
+    <div className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-cyan-100 via-blue-100 to-purple-200 overflow-hidden">
+      <div className="backdrop-blur-md bg-white/60 border border-white/30 rounded-3xl shadow-2xl p-12 flex flex-col items-center z-10">
+        <h1 className="text-4xl font-extrabold text-cyan-700 mb-8 drop-shadow">
+          Welcome to the Quote Generator
+        </h1>
+        <Link href="/quote">
+          <button className="btn btn-primary bg-cyan-500 hover:bg-cyan-600 text-white text-lg font-bold rounded-full px-10 py-3 shadow-lg transition">
+            Quote Generator
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }
