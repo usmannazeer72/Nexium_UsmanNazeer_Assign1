@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -70,17 +71,24 @@ export default function QuoteGenerator() {
             <Button variant="secondary">Back to Home</Button>
           </Link>
         </div>
+        <Image
+          src="/quote-logo.png"
+          alt="Quotify Logo"
+          width={80}
+          height={80}
+          className="mb-4 mx-auto"
+        />
         <h1
           style={{
             fontSize: "2.2rem",
             fontWeight: 800,
             color: "#06b6d4",
             marginBottom: "2rem",
-            fontFamily: "Inter, Geist, Segoe UI, Arial, sans-serif",
             textAlign: "center",
           }}
+          className="font-sans"
         >
-          Quote Generator
+          Quotify
         </h1>
         <form
           onSubmit={handleSubmit}
@@ -168,6 +176,7 @@ export default function QuoteGenerator() {
                       color: "#222",
                       marginBottom: "0.8rem",
                     }}
+                    className="font-sans"
                   >
                     {q.quote}
                   </p>
@@ -177,6 +186,7 @@ export default function QuoteGenerator() {
                       color: "#222",
                       fontSize: "0.95rem",
                     }}
+                    className="font-sans"
                   >
                     - {q.author}
                   </p>

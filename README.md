@@ -1,8 +1,8 @@
-# Nexium_UsmanNazeer_Assign1
+# Quotify
 
 [![Try Now](https://img.shields.io/badge/Try%20Now-Live%20Demo-brightgreen?style=for-the-badge)](https://nexium-usman-nazeer-assign1-hgx4.vercel.app/)
 
-This repository contains the source code for the Nexium Quote Generator assignment, built with [Next.js](https://nextjs.org), Tailwind CSS, and DaisyUI.
+This repository contains the source code for the Quotify assignment, built with [Next.js](https://nextjs.org), Tailwind CSS, and DaisyUI.
 
 ## Project Structure
 
