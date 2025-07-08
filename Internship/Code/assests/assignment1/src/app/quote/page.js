@@ -28,6 +28,7 @@ export default function QuoteGenerator() {
   const [error, setError] = useState("");
   const [topics, setTopics] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   // Load quotes.json dynamically on mount
   useEffect(() => {
@@ -57,6 +58,17 @@ export default function QuoteGenerator() {
       }
     }
   }, [topic, quotesData]);
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+    setShowSuggestions(true);
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setInputValue(suggestion);
+    setTopic(suggestion);
+    setShowSuggestions(false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -101,26 +113,87 @@ export default function QuoteGenerator() {
             width: "100%",
           }}
         >
-          <Input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Enter topic..."
-            style={{
-              fontSize: "1.1rem",
-              padding: "0.5rem 1.2rem",
-              borderRadius: "1.2rem",
-              border: "1.5px solid #06b6d4",
-              outline: "none",
-              background: "#e0f7fa",
-              color: "#111",
-              fontWeight: 500,
-              boxShadow: "0 2px 8px 0 rgba(6,182,212,0.08)",
-              width: 200,
-              height: 40,
-              textAlign: "center",
-            }}
-          />
+          <div style={{ position: "relative", width: 200 }}>
+            <Input
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              onFocus={() => setShowSuggestions(true)}
+              onBlur={() => setTimeout(() => setShowSuggestions(false), 100)}
+              placeholder="Enter topic..."
+              style={{
+                fontSize: "1.1rem",
+                padding: "0.5rem 1.2rem",
+                borderRadius: "1.2rem",
+                border: "1.5px solid #06b6d4",
+                outline: "none",
+                background: "#e0f7fa",
+                color: "#111",
+                fontWeight: 500,
+                boxShadow: "0 2px 8px 0 rgba(6,182,212,0.08)",
+                width: 200,
+                height: 40,
+                textAlign: "center",
+              }}
+            />
+            {showSuggestions && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: 44,
+                  left: 0,
+                  width: "100%",
+                  background: "#fff",
+                  border: "1px solid #06b6d4",
+                  borderRadius: "0 0 1.2rem 1.2rem",
+                  boxShadow: "0 2px 8px 0 rgba(6,182,212,0.08)",
+                  zIndex: 20,
+                  maxHeight: 180,
+                  overflowY: "auto",
+                }}
+              >
+                {(inputValue
+                  ? topics.filter((t) =>
+                      t.toLowerCase().includes(inputValue.toLowerCase())
+                    )
+                  : topics
+                ).length === 0 ? (
+                  <div
+                    style={{
+                      padding: "0.7rem",
+                      color: "#888",
+                      textAlign: "center",
+                    }}
+                  >
+                    No topics found
+                  </div>
+                ) : (
+                  (inputValue
+                    ? topics.filter((t) =>
+                        t.toLowerCase().includes(inputValue.toLowerCase())
+                      )
+                    : topics
+                  )
+                    .slice(0, 16)
+                    .map((suggestion) => (
+                      <div
+                        key={suggestion}
+                        onMouseDown={() => handleSuggestionClick(suggestion)}
+                        style={{
+                          padding: "0.7rem 1rem",
+                          cursor: "pointer",
+                          background: suggestion === topic ? "#e0f7fa" : "#fff",
+                          color: "#111",
+                          borderBottom: "1px solid #e0f7fa",
+                        }}
+                      >
+                        {suggestion}
+                      </div>
+                    ))
+                )}
+              </div>
+            )}
+          </div>
           <Button
             type="submit"
             style={{
